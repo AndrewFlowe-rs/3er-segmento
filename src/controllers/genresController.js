@@ -16,11 +16,11 @@ module.exports = {
   detail: (req,res) => {
     const{id} = req.params
     db.Genre.findByPk(id)
-    .then((genres) => res.render("genresDetail"),{
-      genres
+    .then((genre) => res.render("genresDetail",{
+      genre
     })
-    .catch((err) => {
-      res.send(err.message)
-    }) 
-  }
+    // .catch((err) => {
+    //   res.send(err.message)
+    // }) 
+  )}
 }
