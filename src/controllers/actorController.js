@@ -19,7 +19,29 @@ module.exports= {
             .then((actor) => res.render("actorDetail", {
                 actor
             }))
-            .catch((err) => res.send(err.message))
+            .catch((err) =>{
+                 res.send(err.message)
+    })
+},
+        recommendedA: (req,res) => {
+            db.Actor.findAll({
+            where : {
+                [Op.and] : [
+                    {
+                        rating : {
+                            [Op.gte] : 5
+                        }
+                    }
+                ]
+            },
+            order : [
+                ["rating" , "desc"]
+            ]
+            })
+            .then((actors)=>{
+                res.render("actorRecomended",{ actors })
+            })
+
+        }
     }
-}
    
