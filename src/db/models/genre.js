@@ -1,26 +1,29 @@
-module.exports = (Sequelize, DataTypes) => {
-    const movie = sequalize.define("genre" , {
-        id: {
-            type : DataTypes.INTEGER,
-            primarikey:true
-        } ,
-        created_at : {
-            type : DataTypes.DATEONLY,
-        },
-        updated_at :{
-            type : DataTypes.DATEONLY,
-        },
-        name:{
-            type : DataTypes.STRING(100),
-        },
-        rating : {
-            type : DataTypes.DECIMAL(1,1),
-        },
-        active  : {
-            type : DataTypes.BOOLEAN,
-        },
-        tableName:"genre",
-        timestamps: false
-    })
-    return genre
-}
+module.exports = (sequelize, DataTypes) => {
+    const alias = "Genre";
+    const cols = {
+      id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      ranking: {
+        type: DataTypes.INTEGER,
+      },
+      active: {
+        type: DataTypes.BOOLEAN,
+      },
+    };
+  
+    const config = {
+      timestamps: true,
+      tableName: "genres",
+    };
+  
+    const Genre = sequelize.define(alias, cols, config);
+    return Genre;
+  };

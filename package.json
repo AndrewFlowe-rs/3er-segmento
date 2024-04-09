@@ -2,9 +2,9 @@
   "name": "trabajo",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "./src/app.js",
   "scripts": {
-    "test": "nodemon src/app.js"
+    "dev": "nodemon src/app.js"
   },
   "keywords": [],
   "author": "",

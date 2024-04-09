@@ -1,10 +1,10 @@
 const express = require('express');
 const path = require('path');
 
-const indexRouter = require('./routes/other.routes');
+const indexRouter = require('./routes');
 
-const moviesRoutes = require('./routes/movies.Routes');
-const genresRoutes = require('./routes/genres.Routes');
+const moviesRoutes = require('./routes/moviesRoutes');
+const genresRoutes = require('./routes/genresRoutes');
 const app = express();
 
 // view engine setup
