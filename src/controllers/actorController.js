@@ -1,6 +1,6 @@
 const db = require ("../db/models");
 
-const {op} = db.sequelize;
+const {Op} = db.sequelize;
 module.exports= {
     list: (req,res) => {
         db.Actor.findAll()
