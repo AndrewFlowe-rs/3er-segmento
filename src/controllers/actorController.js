@@ -26,12 +26,12 @@ module.exports= {
         recommendedA: (req,res) => {
             db.Actor.findAll({
             where : {
-                [Op.and] : [
+                [Op.and]: [
                     {
-                        rating : {
-                            [Op.gte] : 5
-                        }
-                    }
+                      rating: {
+                        [Op.gte]: 2
+                      }
+                    },
                 ]
             },
             order : [
