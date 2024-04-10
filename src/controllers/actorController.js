@@ -1,6 +1,6 @@
 const db = require ("../db/models");
 
-const {Op} = db.sequelize;
+const {Op} = db.Sequelize;
 module.exports= {
     list: (req,res) => {
         db.Actor.findAll()
@@ -26,10 +26,10 @@ module.exports= {
         recommendedA: (req,res) => {
             db.Actor.findAll({
             where : {
-                [Op.and]: [
-                    {
+              [Op.and]: [ {  
+                
                       rating: {
-                        [Op.gte]: 2
+                        [Op.gte]: 5
                       }
                     },
                 ]
