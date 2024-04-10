@@ -1,24 +1,25 @@
 const db = require("../db/models")
-const {Op} = db.sequelize;
+const { Op } = db.Sequelize
+
 module.exports = {
-    list: (req,res) => {
-  
-      db.Movie.findAll()
+  list: (req, res) => {
+
+    db.Movie.findAll()
       .then((movies) => {
-  
-        res.render("moviesList",{
+
+        res.render("moviesList", {
           movies
         })
-  
+
       })
       .catch((err) => {
         res.send(err.message)
-      }) 
-    },
-  
-    detail: (req,res) => {
-      const {id} = req.params
-      db.Movie.findByPk(id)
+      })
+  },
+
+  detail: (req, res) => {
+    const { id } = req.params
+    db.Movie.findByPk(id)
       .then((movie) => {
         res.render("moviesDetail", {
           movie
@@ -26,15 +27,15 @@ module.exports = {
       })
       .catch((err) => {
         res.send(err.message)
-      }) 
-    },
-  
-    new: (req,res) => {
-      db.Movie.findAll({
-        order: [
-          ["release_date","desc"]
-        ]
       })
+  },
+
+  new: (req, res) => {
+    db.Movie.findAll({
+      order: [
+        ["release_date", "desc"]
+      ]
+    })
       .then((movies) => {
         res.render("newestMovies", {
           movies
@@ -42,36 +43,36 @@ module.exports = {
       })
       .catch((err) => {
         res.send(err.message)
-      }) 
-    },
-  
-    recommended: (req,res) => {
-      db.Movie.findAll({
-        where: {
-          [Op.and] : [
-            {
-              rating: {
-                [Op.gte] : 8
-              }
-            },
-            {
-              awards: {
-                [Op.gte] : 2
-              }
-            }
-          ]
-        },
-        order:[
-          ["release_date","desc"],
-          ["rating","desc"],
-          ["title","desc"]
-        ]
       })
+  },
+
+  recommended: (req, res) => {
+    db.Movie.findAll({
+      where: {
+        [Op.and]: [
+          {
+            rating: {
+              [Op.gte]: 8
+            }
+          },
+          {
+            awards: {
+              [Op.gte]: 2
+            }
+          }
+        ]
+      },
+      order: [
+        ["release_date", "desc"],
+        ["rating", "desc"],
+        ["title", "desc"]
+      ]
+    })
       .then((movies) => {
-        res.render("recommendedMovies",{ movies })
+        res.render("recommendedMovies", { movies })
       })
       .catch((err) => {
         res.send(err.message)
-      }) 
-    }
+      })
   }
+}
