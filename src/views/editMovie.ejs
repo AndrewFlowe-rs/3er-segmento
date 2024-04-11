@@ -10,29 +10,29 @@
 <body>
     <div class="container mt-5">
         <h1> Editar Películas</h1>
-        <form method="post" action="/movie/edit/<%= Movie.id %>">
+        <form action="/movies/edit/<%= movie.id %>?_method=PUT"  method="post">
             <div class="mb-3">
                 <label for="titulo" class="form-label" name="title">Título</label>
-                <input type="text" class="form-control" id="titulo"  name="title" placeholder="Ingrese el título" value="<%= Movie.title %>">
+                <input type="text" class="form-control" id="titulo"  name="title" placeholder="Ingrese el título" value="<%= movie.title %>">
             </div>
           
             <div class="mb-3">
                 <label for="sinopsis" class="form-label" name ="rating">rating </label>
-            <input type="number"  name ="rating" value="<%= Movie.rating %>">
+            <input type="number"  name ="rating" value="<%= movie.rating %>">
             </div>
           
             <div class="mb-3">
                 <label for="sinopsis" class="form-label" name ="awards">Premios </label>
-                        <input type="number" value="<%= Movie.awards %>">
+                        <input type="number" name ="awards" value="<%= movie.awards %>">
             </div>
           
             <div class="mb-3">
                 <label for="sinopsis" class="form-label" name ="release_date">Release_date</label>
-               <input type="date"name ="release_date" value="<%= Movie.release_date %>">
+               <input type="date"name ="release_date" value="<%= movie.release_date %>">
             </div>
             <div class="mb-3">
                 <label for="sinopsis" class="form-label" name ="lenght">Duracion</label>
-               <input type="number" name ="lenght" value="<%= Movie.lenght%>">
+               <input type="number" name ="length" value="<%= movie.length%>">
             </div>
             <button type="submit" class="btn btn-primary">Editar Película</button>
         </form>

@@ -10,9 +10,10 @@ router.get('/movies/detail/:id', moviesController.detail);
 //desafio
 router.get('/movies/add', moviesController.add);
 router.post('/movies/add', moviesController.create); 
-router.get('/edit/:id', moviesController.edit); 
-router.post('/movies/edit/:id', moviesController.update);
+router.get('/movies/edit/:id', moviesController.edit); 
+router.put('/movies/edit/:id', moviesController.update);
 
-
+router.get('/movies/delete/:id',moviesController.borrar);
+router.delete('/movies/delete/:id', moviesController.destroy);
 
 module.exports = router;

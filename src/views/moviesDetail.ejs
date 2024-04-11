@@ -18,7 +18,10 @@
     <p>LENGTH: <%= movie.length + ' min'%> </p>
     <p>RELEASE DATE: <%= movie.release_date %> </p>
     <div>
-        <a href="/edit/id" class="btn btn-primary">Editar Pelicula</a>
+        <a href="/movies/edit/<%= movie.id %>" class="btn btn-primary">Editar Pelicula</a>
+    </div>
+    <div>
+        <a href="/movies/delete/<%= movie.id %>" type="button" class="col-3 btn btn-outline-danger">Borrar</a>
     </div>
 
 </body>

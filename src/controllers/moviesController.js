@@ -31,28 +31,47 @@ module.exports = {
 
   },
 
-  edit : (req,res)=> {
-      db.Movie.findByPk(req.params.id)
-      .then((Movie) => {
-        res.render("editMovie" ,{Movie : Movie})
+  edit: (req, res) => {
+    const { id } = req.params
+    db.Movie.findByPk(id)
+      .then((movie) => {
+        res.render("editMovie", {
+          movie
+        })
       })
   },
-  update: function (req,res) {
+  update: function (req, res) {
     db.Movie.update({
-        title: req.body.title,
-        rating: req.body.rating,
-        awards: req.body.awards,
-        release_date: req.body.release_date,
-        length: req.body.length
-    },{
-        where:{
-            id: req.params.id
-        }
+      title: req.body.title,
+      rating: req.body.rating,
+      awards: req.body.awards,
+      release_date: req.body.release_date,
+      length: req.body.length
+    }, {
+      where: {
+        id: req.params.id
+      }
     })
 
-    res.redirect('/movies/edit/' + req.params.id);
+    res.redirect('/movies');
 
-},
+  },
+  borrar: (req, res) => {
+    const { id } = req.params
+    db.Movie.findByPk(id)
+      .then(Movie => {
+        res.render('moviesDelete', { Movie });
+      })
+  },
+  destroy: (req, res) => {
+    db.Movie.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    res.redirect('/movies');
+  },
+
 
   detail: (req, res) => {
     const { id } = req.params
