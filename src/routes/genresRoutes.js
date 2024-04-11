@@ -4,6 +4,6 @@ const genresController = require('../controllers/genresController');
 
 router.get('/genres', genresController.list);
 router.get('/genres/detail/:id', genresController.detail);
-//hola soy goku 
+//hola soy goku y sean bienvenidos
 
 module.exports = router;
