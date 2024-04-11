@@ -31,6 +31,29 @@ module.exports = {
 
   },
 
+  edit : (req,res)=> {
+      db.Movie.findByPk(req.params.id)
+      .then((Movie) => {
+        res.render("editMovie" ,{Movie : Movie})
+      })
+  },
+  update: function (req,res) {
+    db.Movie.update({
+        title: req.body.title,
+        rating: req.body.rating,
+        awards: req.body.awards,
+        release_date: req.body.release_date,
+        length: req.body.length
+    },{
+        where:{
+            id: req.params.id
+        }
+    })
+
+    res.redirect('/movies/edit/' + req.params.id);
+
+},
+
   detail: (req, res) => {
     const { id } = req.params
     db.Movie.findByPk(id)

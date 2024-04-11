@@ -6,8 +6,13 @@ router.get('/movies', moviesController.list);
 router.get('/movies/new', moviesController.new);
 router.get('/movies/recommended', moviesController.recommended);
 router.get('/movies/detail/:id', moviesController.detail);
+
+//desafio
 router.get('/movies/add', moviesController.add);
-router.post('/movies/add', moviesController.create);
+router.post('/movies/add', moviesController.create); 
+router.get('/edit/:id', moviesController.edit); 
+router.post('/movies/edit/:id', moviesController.update);
+
 
 
 module.exports = router;
