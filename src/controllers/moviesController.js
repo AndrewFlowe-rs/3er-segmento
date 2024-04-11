@@ -16,6 +16,20 @@ module.exports = {
         res.send(err.message)
       })
   },
+  add: (req, res) => {
+    res.render("createMovie")
+  },
+  create: (req, res) => {
+    db.Movie.create({
+      title: req.body.title,
+      rating: req.body.rating,
+      awards: req.body.awards,
+      release_date: req.body.release_date,
+      length: req.body.length,
+    });
+    res.redirect("/movies")
+
+  },
 
   detail: (req, res) => {
     const { id } = req.params
